@@ -13,6 +13,27 @@ function displayTime() {
 // function? How can DOM traversal be used to get the "hour-x" id of the
 // time-block containing the button that was clicked? How might the id be
 // useful when saving the description in local storage?
+function dueCheck() {
+  // TA suggested using a for loop using the ID's however they all have the class of time block so maybe this will be easier using the each method
+  $(".time-block").each(function () {
+    eventEl = $(this);
+
+    var eventHour = parseInt(eventEl.attr("id").split("-")[1]);
+    // has to be captial H to use 24 hour time
+    var currentHour = parseInt(dayjs().format("H"));
+    // compare the hours and add classes
+    if (eventHour < currentHour) {
+      eventEl.addClass("past");
+      eventEl.removeClass("present future");
+    } else if (eventHour === currentHour) {
+      eventEl.addClass("present");
+      eventEl.removeClass("past future");
+    } else {
+      eventEl.addClass("future");
+      eventEl.removeClass("present past");
+    }
+  });
+}
 
 // $(".saveBtn").on('click', function() {
 //console.log(this);
@@ -20,22 +41,6 @@ function displayTime() {
 // key names needs to match the key names for getItem localStorage
 //setItem for localStorage to save the input to the corresponding hour by using keyword 'this'
 //   })
-
-// First
-// TODO: Add code to apply the past, present, or future class to each time
-// block by comparing the id to the current hour. HINTS: How can the id
-// attribute of each time-block be used to conditionally add or remove the
-// past, present, and future classes? How can Day.js be used to get the
-// current hour in 24-hour time?
-
-// Use jqeury.children to select children elements
-document.querySelectorAll(".time-block"); // returns an array of all time block names and can be used for the for loop {use the jquery version}
-
-// Use dayjs() to grab current time (just the hour)
-// for loop to go over all the time blocks
-// Inside the for loop select the time block
-for (i = 9; i < 18; i++) document.querySelector("#hour-" + i);
-// i is the current time block
 
 // use if statment to compare current time to the time block
 // if the hour is less than the current time block then apply future
@@ -62,3 +67,4 @@ for (i = 9; i < 18; i++) document.querySelector("#hour-" + i);
 // $("currentDay").text(dayjsvar)
 displayTime();
 setInterval(displayTime, 1000);
+setInterval(dueCheck, 1000);
