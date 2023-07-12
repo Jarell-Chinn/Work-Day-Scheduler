@@ -11,21 +11,20 @@
 
 ## Description
 
-[Visit the Deployed Site]()
+[Visit the Deployed Site](https://jarell-chinn.github.io/Work-Day-Scheduler/)
 
 This is a work scheduler that you can use to save daily tasks. Based on the current time it shows which hours are past, present or future. If you press the save icon you will save your typed activity in the time block and when you refresh the page the activity stays.
 
 ## Usage
 
-![Front page of the quiz](/assets/images/Quiz.png)
+![Front page of the quiz](./assets/images/Work-Day.png)
 
 # Learning points/Features
 
 Big things I learned on this project would be
 
-1.
-2.
-3.
+1. Using Jquery to work dayjs and formatting the time/date
+2. A much better understanding on adding classes through JavaScript
 
 ## Aurthor Info
 
