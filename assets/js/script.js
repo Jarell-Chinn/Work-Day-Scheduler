@@ -4,7 +4,7 @@
 var currentDayEl = $("#currentDay");
 
 function displayTime() {
-  var today = dayjs().format("dddd");
+  var today = dayjs().format("MM" + "-" + "DD" + "-" + "YYYY ");
   currentDayEl.text(today);
 }
 
@@ -19,7 +19,7 @@ function dueCheck() {
     var eventHour = parseInt(eventEl.attr("id").split("-")[1]);
     // has to be captial H to use 24 hour time
     var currentHour = parseInt(dayjs().format("H"));
-    // compare the hours and add classes
+    // compare the hours and add classes and remove classes to update
     if (eventHour < currentHour) {
       eventEl.addClass("past");
       eventEl.removeClass("present future");
